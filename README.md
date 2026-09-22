@@ -104,14 +104,6 @@ Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can co
    - Click **Compare & pull request**.
    - Fill in the PR template details and submit!
 
----
-
-## 📚 External / Sister Archives
-
-You can also check out other community archives:
-- **GSoC 2026 Sister Archive**: [satwiksps/GSoC_archive_2026](https://github.com/satwiksps/GSoC_archive_2026)
-- **GSoC 2025 Archive**: [SammanSarkar/GSoC_archive_2025](https://github.com/SammanSarkar/GSoC_archive_2025)
-- **Older Archives (2024 & earlier)**: [Aritra8438/GSoC_archive](https://github.com/Aritra8438/GSoC_archive)
 
 ---
 
