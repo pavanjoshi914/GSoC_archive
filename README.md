@@ -1,7 +1,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/Rishabh04-02/The-Beginners-Guide-to-Google-Summer-of-Code-GSoC/master/gsoclogo.svg" alt="Google Summer of Code Logo" width="180"><br><br>
-  <strong>GSoC 2026 Proposals Archive</strong><br>
-  Accepted Google Summer of Code (GSoC) 2026 proposals archive for reference, guidance, and inspiration from the community.<br>
+  <strong>Google Summer of Code (GSoC) Proposals Archive</strong><br>
+  A comprehensive community archive of accepted (and reference) GSoC proposals across all years.<br>
   Read, compare, and learn what makes a technically sound, structured, and winning proposal!
 </p>
 
@@ -22,43 +22,41 @@
 
 ---
 
-## 📚 Previous Years' Archives
+## 📁 Directory & Folder Structure
 
-Looking for past years' proposals? Check out these archives:
-- **GSoC 2025**: [SammanSarkar/GSoC_archive_2025](https://github.com/SammanSarkar/GSoC_archive_2025)
-- **GSoC 2024 and earlier**: [Aritra8438/GSoC_archive](https://github.com/Aritra8438/GSoC_archive)
-- **GSoC 2026 (Sister Archive)**: [satwiksps/GSoC_archive_2026](https://github.com/satwiksps/GSoC_archive_2026)
-
----
-
-## 📁 Folder Structure
-
-Proposals should follow this directory and file naming pattern:
+To organize proposals cleanly across multiple years and organizations, all submissions follow this nested structure:
 
 ```text
-Organization Name/
-└── Accepted/
-    └── <sub-org-name(if any)>_<project-topic>_<username>.pdf
+<Year>/
+└── <Organization Name>/
+    ├── Accepted/
+    │   └── <sub-org-name(if any)>_<project-topic>_<username>.pdf
+    └── Rejected/ (optional for learning/comparison)
+        └── <sub-org-name(if any)>_<project-topic>_<username>.pdf
 ```
 
-*(You may also contribute to a `Rejected/` folder if you'd like your proposal to serve as a helpful comparison/learning resource for the community).*
-
-### Example:
-`Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`
+### Examples:
+- `2026/Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`
+- `2026/OpenVINO Toolkit/Accepted/model-optimization_alexsmith.pdf`
+- `2025/TensorFlow/Accepted/keras-cv_enhancements_janedoe.pdf`
 
 ---
 
 ## 🚀 Contributing a Proposal
 
-You can contribute either **via the GitHub Web Interface** (easiest, no Git CLI needed) or **via Git Command Line**.
+Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can contribute either **via the GitHub Web Interface** (easiest, no Git installation required) or **via Git Command Line**.
 
 ### Method 1: Using GitHub Web Interface (Easiest)
 
-1. **Fork** this repository by clicking the **Fork** button in the top right.
+1. **Fork** this repository by clicking the **Fork** button at the top right.
 2. In your fork, click **Add file** ➔ **Upload files**.
 3. Choose your proposal PDF file.
-4. Set the path in the commit box by typing `<Organization Name>/Accepted/<sub-org-name(if any)>_<project-topic>_<username>.pdf` (or navigate into the organization folder if it already exists).
-5. Add a commit message: `Add proposal for <Organization Name> by @<your-username>`.
+4. Set the full target path in the commit box:
+   ```text
+   <Year>/<Organization Name>/Accepted/<sub-org-name(if any)>_<project-topic>_<username>.pdf
+   ```
+   *(e.g., `2026/Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`)*
+5. Add a commit message: `Add GSoC <Year> proposal for <Organization Name> by @<your-username>`.
 6. Click **Commit changes**.
 7. Go to the **Pull requests** tab of your fork and click **New pull request** ➔ **Create pull request**.
 
@@ -69,33 +67,37 @@ You can contribute either **via the GitHub Web Interface** (easiest, no Git CLI 
 1. **Fork this repository** using the "Fork" button on GitHub.
 2. **Clone your fork** to your local machine:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/GSoC_archive_2026.git
+   git clone https://github.com/YOUR_USERNAME/GSoC_archive.git
    ```
 3. **Navigate to the repository**:
    ```bash
-   cd GSoC_archive_2026
+   cd GSoC_archive
    ```
 4. **Add the upstream repository**:
    ```bash
-   git remote add upstream https://github.com/pavanjoshi914/GSoC_archive_2026.git
+   git remote add upstream https://github.com/pavanjoshi914/GSoC_archive.git
    ```
-5. **Sync your fork** with the upstream main branch:
+5. **Sync your fork** with upstream:
    ```bash
    git pull upstream main --rebase
    ```
 6. **Create a new branch**:
    ```bash
-   git checkout -b add-proposal-<org_name>
+   git checkout -b add-proposal-<year>-<org-name>
    ```
-7. **Add your proposal**:
-   - Create a folder named after your organization (e.g. `Python Software Foundation/`) if it does not already exist.
-   - Create an `Accepted/` folder inside it.
-   - Place your proposal PDF file inside using the format: `<sub-org-name(if any)>_<project-topic>_<username>.pdf`
+7. **Add your proposal file**:
+   - Create a folder for the year (e.g., `2026/`) if it doesn't exist.
+   - Create a folder for the organization inside it (e.g., `2026/Python Software Foundation/`).
+   - Create the `Accepted/` folder inside the organization folder.
+   - Place your proposal PDF file inside using the format:
+     ```text
+     <sub-org-name(if any)>_<project-topic>_<username>.pdf
+     ```
 8. **Commit and push your changes**:
    ```bash
    git add .
-   git commit -m "Add proposal for <org_name>"
-   git push origin add-proposal-<org_name>
+   git commit -m "Add GSoC <Year> proposal for <org-name>"
+   git push origin add-proposal-<year>-<org-name>
    ```
 9. **Open a Pull Request**:
    - Go to your fork on GitHub.
@@ -104,5 +106,14 @@ You can contribute either **via the GitHub Web Interface** (easiest, no Git CLI 
 
 ---
 
+## 📚 External / Sister Archives
+
+You can also check out other community archives:
+- **GSoC 2026 Sister Archive**: [satwiksps/GSoC_archive_2026](https://github.com/satwiksps/GSoC_archive_2026)
+- **GSoC 2025 Archive**: [SammanSarkar/GSoC_archive_2025](https://github.com/SammanSarkar/GSoC_archive_2025)
+- **Older Archives (2024 & earlier)**: [Aritra8438/GSoC_archive](https://github.com/Aritra8438/GSoC_archive)
+
+---
+
 ## 📜 Disclaimer
-All proposals uploaded to this repository belong to their respective authors. They are shared here for educational purposes and reference to help future GSoC applicants learn how to craft strong proposals. Please do not plagiarize.
+All proposals uploaded to this repository belong to their respective authors. They are shared here for educational purposes and reference to help future GSoC applicants learn how to craft strong, well-structured proposals. Please respect the authors and do not plagiarize.
