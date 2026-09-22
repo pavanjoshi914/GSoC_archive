@@ -22,6 +22,22 @@
 
 ---
 
+## 📂 Browse by Year
+
+Quick access to proposals organized chronologically:
+
+| Year | Archive Directory | Status |
+| :--- | :--- | :--- |
+| **2026** | [**📁 2026 Proposals**](./2026) | 🌟 Current / Accepting Proposals |
+| **2025** | [**📁 2025 Proposals**](./2025) | 📂 Open for Contributions |
+| **2024** | [**📁 2024 Proposals**](./2024) | 📂 Open for Contributions |
+| **2023** | [**📁 2023 Proposals**](./2023) | 📂 Open for Contributions |
+| **2022** | [**📁 2022 Proposals**](./2022) | 📂 Open for Contributions |
+
+*(Future years such as `2027/`, `2028/`, etc. will follow the same numerical sequence).*
+
+---
+
 ## 📁 Directory & Folder Structure
 
 To organize proposals cleanly across multiple years and organizations, all submissions follow this nested structure:
