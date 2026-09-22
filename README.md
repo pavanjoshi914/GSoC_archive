@@ -62,19 +62,20 @@ To organize proposals cleanly across multiple years and organizations, all submi
 
 Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can contribute either **via the GitHub Web Interface** (easiest, no Git installation required) or **via Git Command Line**.
 
-### Method 1: Using GitHub Web Interface (Easiest)
+### Method 1: Using GitHub Web Interface (Easiest — No Git CLI Needed)
 
-1. **Fork** this repository by clicking the **Fork** button at the top right.
-2. In your fork, click **Add file** ➔ **Upload files**.
-3. Choose your proposal PDF file.
-4. Set the full target path in the commit box:
+1. Navigate to the folder for your year (e.g., [**`2026/`**](./2026)).
+2. In the top-right, click **Add file** ➔ **Upload files**.
+3. Drag and drop your proposal PDF.
+4. In the file name / commit box, specify your organization path:
    ```text
    <Year>/<Organization Name>/Accepted/<sub-org-name(if any)>_<project-topic>_<username>.pdf
    ```
    *(e.g., `2026/Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`)*
-5. Add a commit message: `Add GSoC <Year> proposal for <Organization Name> by @<your-username>`.
-6. Click **Commit changes**.
-7. Go to the **Pull requests** tab of your fork and click **New pull request** ➔ **Create pull request**.
+5. Click **Propose changes** *(GitHub will automatically handle the fork & branch in the background!)*.
+6. Click **Create pull request** and submit!
+
+> 💡 **Bonus**: Once your PR is merged, the automated workflow will immediately add your avatar to the [Contributors](#-contributors) wall! 🎉
 
 ---
 
