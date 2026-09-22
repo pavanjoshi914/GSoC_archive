@@ -104,7 +104,6 @@ Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can co
    - Click **Compare & pull request**.
    - Fill in the PR template details and submit!
 
-
 ---
 
 ## 📜 Disclaimer
