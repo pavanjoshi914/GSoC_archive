@@ -33,6 +33,7 @@ Quick access to proposals organized chronologically:
 | **2024** | [**📁 2024 Proposals**](./2024) | 📂 Open for Contributions |
 | **2023** | [**📁 2023 Proposals**](./2023) | 📂 Open for Contributions |
 | **2022** | [**📁 2022 Proposals**](./2022) | 📂 Open for Contributions |
+| **2021** | [**📁 2021 Proposals**](./2021) | 📂 Open for Contributions |
 
 *(Future years such as `2027/`, `2028/`, etc. will follow the same numerical sequence).*
 
