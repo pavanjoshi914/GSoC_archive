@@ -60,28 +60,15 @@ To organize proposals cleanly across multiple years and organizations, all submi
 
 ## 🚀 Contributing a Proposal
 
-Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can contribute either **via the GitHub Web Interface** (easiest, no Git installation required) or **via Git Command Line**.
-
-### Method 1: Using GitHub Web Interface (Easiest — No Git CLI Needed)
-
-1. Navigate to the folder for your year (e.g., [**`2026/`**](./2026)).
-2. In the top-right, click **Add file** ➔ **Upload files**.
-3. Drag and drop your proposal PDF.
-4. In the file name / commit box, specify your organization path:
-   ```text
-   <Year>/<Organization Name>/Accepted/<sub-org-name(if any)>_<project-topic>_<username>.pdf
-   ```
-   *(e.g., `2026/Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`)*
-5. Click **Propose changes** *(GitHub will automatically handle the fork & branch in the background!)*.
-6. Click **Create pull request** and submit!
-
-> 💡 **Bonus**: Once your PR is merged, the automated workflow will immediately add your avatar to the [Contributors](#-contributors) wall! 🎉
+Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can submit your proposal using either method:
 
 ---
 
-### Method 2: Using Git Command Line
+### Method 1: Submit via Pull Request (Standard & Recommended)
 
-1. **Fork this repository** using the "Fork" button on GitHub.
+This is the classic open-source developer way!
+
+1. **Fork this repository** using the **Fork** button on GitHub.
 2. **Clone your fork** to your local machine:
    ```bash
    git clone https://github.com/YOUR_USERNAME/GSoC_archive.git
@@ -90,26 +77,27 @@ Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can co
    ```bash
    cd GSoC_archive
    ```
-4. **Add the upstream repository**:
+4. **Add upstream remote**:
    ```bash
    git remote add upstream https://github.com/pavanjoshi914/GSoC_archive.git
    ```
-5. **Sync your fork** with upstream:
+5. **Sync with upstream**:
    ```bash
    git pull upstream main --rebase
    ```
-6. **Create a new branch**:
+6. **Create a new feature branch**:
    ```bash
    git checkout -b add-proposal-<year>-<org-name>
    ```
 7. **Add your proposal file**:
-   - Create a folder for the year (e.g., `2026/`) if it doesn't exist.
-   - Create a folder for the organization inside it (e.g., `2026/Python Software Foundation/`).
-   - Create the `Accepted/` folder inside the organization folder.
-   - Place your proposal PDF file inside using the format:
+   - Navigate to the year folder (e.g., `2026/`).
+   - Create a folder for your organization (e.g., `2026/Python Software Foundation/`) if it doesn't already exist.
+   - Create an `Accepted/` (or `Rejected/`) subfolder.
+   - Save your PDF using the naming format:
      ```text
      <sub-org-name(if any)>_<project-topic>_<username>.pdf
      ```
+     *(Example: `2026/Python Software Foundation/Accepted/cpython_asyncio-improvements_johndoe.pdf`)*
 8. **Commit and push your changes**:
    ```bash
    git add .
@@ -118,8 +106,23 @@ Proposals from any year (2026, 2025, 2024, etc.) are warmly welcomed! You can co
    ```
 9. **Open a Pull Request**:
    - Go to your fork on GitHub.
-   - Click **Compare & pull request**.
-   - Fill in the PR template details and submit!
+   - Click **Compare & pull request** and submit!
+
+> 💡 **Recognition**: When your PR is merged, our automated bot will automatically add your GitHub avatar to the [Contributors](#-contributors) section! 🎉
+
+---
+
+### Method 2: Submit via GitHub Issue (Quick Alternative — No Git CLI Needed)
+
+If you'd like to contribute quickly without cloning or using Git:
+
+1. Click [**New Issue ➔ Submit GSoC Proposal**](https://github.com/pavanjoshi914/GSoC_archive/issues/new?template=submit-proposal.yml).
+2. Select your **Year**, type your **Organization Name**, and enter your **Project Topic**.
+3. **Drag and drop your proposal PDF** directly into the upload area.
+4. Click **Submit new issue**.
+
+> 🤖 **Automated Processing**: Our GitHub Action will automatically download your PDF, place it in the correct directory, commit it to the archive, close the issue, and feature your avatar on the [Contributors](#-contributors) wall!
+
 
 ---
 

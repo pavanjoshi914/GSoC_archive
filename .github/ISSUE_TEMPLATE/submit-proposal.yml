@@ -1,0 +1,64 @@
+name: "📄 Submit GSoC Proposal"
+description: "Submit your GSoC proposal directly via an issue (easiest method, no Git CLI required)."
+title: "[Proposal]: <Organization Name> - <Project Topic>"
+labels: ["proposal-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Thanks for sharing your GSoC Proposal with the community! 🚀
+        Please fill in the quick details below and attach your proposal PDF. Our automated bot will place it in the archive and feature your GitHub profile on the Contributors wall!
+  - type: dropdown
+    id: year
+    attributes:
+      label: GSoC Year
+      description: Select your GSoC participation year.
+      options:
+        - "2026"
+        - "2025"
+        - "2024"
+        - "2023"
+        - "2022"
+    validations:
+      required: true
+  - type: input
+    id: organization
+    attributes:
+      label: Organization Name
+      description: The official name of the GSoC organization.
+      placeholder: "e.g., Python Software Foundation"
+    validations:
+      required: true
+  - type: input
+    id: sub_organization
+    attributes:
+      label: Sub-Organization (Optional)
+      description: Sub-org if applicable.
+      placeholder: "e.g., CPython"
+    validations:
+      required: false
+  - type: input
+    id: project_topic
+    attributes:
+      label: Project Topic / Title
+      description: Short name or topic of your project.
+      placeholder: "e.g., Asyncio Improvements"
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Acceptance Status
+      options:
+        - "Accepted"
+        - "Rejected"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal_file
+    attributes:
+      label: Proposal PDF File
+      description: Drag and drop your proposal `.pdf` file here. GitHub will automatically generate a link for it.
+      placeholder: "Drag and drop your PDF file here..."
+    validations:
+      required: true

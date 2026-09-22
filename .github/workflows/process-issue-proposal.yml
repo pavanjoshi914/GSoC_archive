@@ -1,0 +1,150 @@
+name: Process Proposal from Issue
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  process-proposal:
+    if: contains(github.event.issue.labels.*.name, 'proposal-submission')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Process Proposal and Commit
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const https = require('https');
+            const http = require('http');
+
+            const body = context.payload.issue.body || '';
+            const author = context.payload.issue.user.login;
+            const issueNumber = context.payload.issue.number;
+
+            // Extract fields from Issue markdown
+            function getField(label) {
+              const regex = new RegExp(`###\\s+${label}\\s*\\n\\s*([\\s\\S]*?)(?=\\n###|$)`, 'i');
+              const match = body.match(regex);
+              return match ? match[1].trim() : '';
+            }
+
+            const year = getField('GSoC Year') || '2026';
+            const org = getField('Organization Name');
+            const subOrg = getField('Sub-Organization \\(Optional\\)');
+            const topic = getField('Project Topic / Title');
+            const status = getField('Acceptance Status') || 'Accepted';
+
+            if (!org || !topic) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `@${author} Please provide both the **Organization Name** and **Project Topic** in the issue.`
+              });
+              return;
+            }
+
+            // Find PDF link in markdown: either [name](url) or plain URL
+            const urlMatch = body.match(/https:\/\/[^\s\)\"\'\`]+/g);
+            let pdfUrl = null;
+            if (urlMatch) {
+              pdfUrl = urlMatch.find(u => u.toLowerCase().endsWith('.pdf') || u.includes('/files/') || u.includes('user-attachments'));
+            }
+
+            if (!pdfUrl) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `@${author} Could not find a valid PDF attachment in your submission. Please edit the issue or comment with your uploaded \`.pdf\` file.`
+              });
+              return;
+            }
+
+            function sanitize(str) {
+              return str.toLowerCase().replace(/[^a-z0-9_-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            }
+
+            const safeOrg = org.replace(/[\/\\:*?"<>|]/g, '').trim();
+            const safeTopic = sanitize(topic);
+            const safeSubOrg = subOrg ? sanitize(subOrg) : '';
+            const safeAuthor = sanitize(author);
+
+            const fileName = safeSubOrg ? `${safeSubOrg}_${safeTopic}_${safeAuthor}.pdf` : `${safeTopic}_${safeAuthor}.pdf`;
+            const targetDir = path.join(year, safeOrg, status);
+            const targetFilePath = path.join(targetDir, fileName);
+
+            fs.mkdirSync(targetDir, { recursive: true });
+
+            // Download function with redirect handling
+            function downloadFile(url, dest) {
+              return new Promise((resolve, reject) => {
+                const client = url.startsWith('https') ? https : http;
+                client.get(url, (res) => {
+                  if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                    return downloadFile(res.headers.location, dest).then(resolve).catch(reject);
+                  }
+                  if (res.statusCode !== 200) {
+                    return reject(new Error(`Failed to download: HTTP status ${res.statusCode}`));
+                  }
+                  const file = fs.createWriteStream(dest);
+                  res.pipe(file);
+                  file.on('finish', () => file.close(resolve));
+                }).on('error', (err) => {
+                  if (fs.existsSync(dest)) fs.unlinkSync(dest);
+                  reject(err);
+                });
+              });
+            }
+
+            try {
+              await downloadFile(pdfUrl, targetFilePath);
+            } catch (err) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: `@${author} Error downloading your proposal file: ${err.message}. Please check the file attachment.`
+              });
+              return;
+            }
+
+            // Add contributor to README
+            const profileUrl = `https://github.com/${author}`;
+            const avatarUrl = `https://github.com/${author}.png`;
+            const linkMd = `<a href="${profileUrl}"><img src="${avatarUrl}" width="50px" alt="${author}" /></a>`;
+
+            let readme = fs.readFileSync('README.md', 'utf8');
+            if (!readme.includes(`href="${profileUrl}"`)) {
+              readme = readme.replace('<!-- CONTRIBUTORS_END -->', `${linkMd}\n<!-- CONTRIBUTORS_END -->`);
+              fs.writeFileSync('README.md', readme);
+            }
+
+            const { execSync } = require('child_process');
+            execSync('git config user.name "github-actions[bot]"');
+            execSync('git config user.email "github-actions[bot]@users.noreply.github.com"');
+            execSync(`git add "${targetFilePath}" README.md`);
+            execSync(`git commit -m "feat(archive): add ${year} proposal for ${safeOrg} by @${author}"`);
+            execSync('git push origin main');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: `🎉 **Success!** Your proposal has been added to the archive:\n- **Path**: \`${targetFilePath}\`\n\nYour profile has also been added to the [Contributors](https://github.com/${context.repo.owner}/${context.repo.repo}#contributors) wall. Thank you for contributing to the GSoC Archive! 🚀`
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              state: 'closed'
+            });
