@@ -19,6 +19,8 @@
 <!-- CONTRIBUTORS_END -->
 
 > Every contributor who gets their proposal PR merged will be automatically added above! 🎉
+> 
+> ⭐ **Is your proposal already in this archive?** Claim it and join the spotlight wall! Send a quick email to [pavanj914@gmail.com](mailto:pavanj914@gmail.com) (or open an issue/PR) with your proposal path and GitHub username, and you'll be featured right away.
 
 ---
 
@@ -28,12 +30,12 @@ Quick access to proposals organized chronologically:
 
 | Year | Archive Directory | Status |
 | :--- | :--- | :--- |
-| **2026** | [**📁 2026 Proposals**](./2026) | 🌟 Current / Accepting Proposals |
-| **2025** | [**📁 2025 Proposals**](./2025) | 📂 Open for Contributions |
-| **2024** | [**📁 2024 Proposals**](./2024) | 📂 Open for Contributions |
-| **2023** | [**📁 2023 Proposals**](./2023) | 📂 Open for Contributions |
+| **2026** | [**📁 2026 Proposals**](./2026) | 🌟 48 Proposals Available |
+| **2025** | [**📁 2025 Proposals**](./2025) | 📂 43 Proposals Available |
+| **2024** | [**📁 2024 Proposals**](./2024) | 📂 11 Proposals Available |
+| **2023** | [**📁 2023 Proposals**](./2023) | 📂 14 Proposals Available |
 | **2022** | [**📁 2022 Proposals**](./2022) | 📂 Open for Contributions |
-| **2021** | [**📁 2021 Proposals**](./2021) | 📂 Open for Contributions |
+| **2021** | [**📁 2021 Proposals**](./2021) | 📂 2 Proposals Available |
 
 *(Future years such as `2027/`, `2028/`, etc. will follow the same numerical sequence).*
 
